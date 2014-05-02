@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+<head>
+     <title>0Short</title>
+    <meta http-equiv="Content-Type" content="text/html>; charset=utf-8" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link href='http://fonts.googleapis.com/css?family=Petit+Formal+Script' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:300,400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+	<div class="content">
+			<div class="wrap">
+				<div class="content-grid">
+                    <p><img src="{% static 'images/top.png' %}" title=""></p>
+				</div>
+				<div class="grid">
+                    <p><img src="{% static 'images/0short.png' %}" title=""></p>
+		<h3>Short your URL</h3>
+		
+        {% if valid %}
+	    <a href="http://{{ request.get_host }}{% url 'url_redirection' url %}">
+        http://{{ request.get_host }}{% url 'url_redirection' url %}</a>
+        {% else %}
+        <form action="{% url 'murl.views.create' %}" method="post">
+		    {% csrf_token %}
+            {{ form }}
+            <!-- <input type="submit" value="Submit" class="btn span btn-4 btn-4a icon-arrow-right"/> -->
+         <!--  <input type="text" size="30" value="Your URL" id="URL"> -->
+         <button type="submit" class="btn span btn-4 btn-4a icon-arrow-right"><span></span></button></a>
+		    <div id="response"></div>
+		</form>
+        {% endif %}
+		<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<div class="footer">
+            <p class="a"><a href="#"><img src="{% static 'images/github.png' %}" title=""></a>
+		<p>Copyright 2014 &copy Product by <a href="http://0xnaam.fr">Naam</a> and Design by <a href="http://tinydgzz.fr"> TiNyDGZz</a> </p>
+		</div>
+		<div class="clear"></div>
+		</div>
+		</div>
+		<div class="clear"></div>
+</body>
+</html>
