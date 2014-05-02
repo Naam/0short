@@ -80,10 +80,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATICFILES_DIRS = (
-        '/home/naam/Documents/Repos/django/mini_url/mini_url/static/',
+        '/home/naam/Documents/Repos/0short/mini_url/static/',
         )
 STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (
-        "/home/naam/Documents/Repos/django/mini_url/template"
+        "/home/naam/Documents/Repos/0short/template"
         )
