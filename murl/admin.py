@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 from django.contrib import admin
-from murl.models import urlEntry
+from murl.models import urlEntry_clear
 
 class AdminUrlEntry(admin.ModelAdmin):
     list_display    = ('code', 'access', 'url_long', 'date',)
@@ -9,4 +9,4 @@ class AdminUrlEntry(admin.ModelAdmin):
     ordering        = ('date',)
     search_fields   = ('code', 'url_long', 'date',)
 
-admin.site.register(urlEntry, AdminUrlEntry)
+admin.site.register(urlEntry_clear, AdminUrlEntry)

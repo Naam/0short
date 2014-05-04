@@ -20,16 +20,22 @@
 		<h3>Short your URL</h3>
 		
         {% if valid %}
-	    <a href="http://{{ request.get_host }}{% url 'url_redirection' url %}">
-        http://{{ request.get_host }}{% url 'url_redirection' url %}</a>
+        {% if ciphered %}
+         <a href="http://{{ request.get_host }}{% url 'url_redirection_ciphered' url key %}">
+        http://{{ request.get_host }}{% url 'url_redirection_ciphered' url key %}</a>
+        {% else %}
+	    <a href="http://{{ request.get_host }}{% url 'url_redirection_clear' url %}">
+        http://{{ request.get_host }}{% url 'url_redirection_clear' url %}</a>
+        {% endif %}
         {% else %}
         <form action="{% url 'murl.views.create' %}" method="post">
 		    {% csrf_token %}
-            {{ form }}
-            <!-- <input type="submit" value="Submit" class="btn span btn-4 btn-4a icon-arrow-right"/> -->
-         <!--  <input type="text" size="30" value="Your URL" id="URL"> -->
+            {{ form.non_field_errors }}
+            {{ form.url_long.errors }}
+            {{ form.url_long }}
          <button type="submit" class="btn span btn-4 btn-4a icon-arrow-right"><span></span></button></a>
-		    <div id="response"></div>
+        </br>
+            Encrypt link {{ form.ciphered }}
 		</form>
         {% endif %}
 		<div class="clear"></div>
