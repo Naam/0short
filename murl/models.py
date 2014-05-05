@@ -36,9 +36,12 @@ class urlEntry_clear(urlEntry):
 
 class urlEntry_ciphered(urlEntry):
     url_long    = models.TextField(unique=True, verbose_name="")
+    ciphered    = models.BooleanField()
     key         = ""
     def save(self, *args, **kwargs):
-        self.url_long, self.key = crypto.encrypt(self.url_long)
+        if not self.ciphered:
+            self.url_long, self.key = crypto.encrypt(self.url_long)
+            self.ciphered = True
         super(urlEntry_ciphered, self).save(*args, **kwargs)
     class Meta:
         verbose_name = "short Url (ciphered)"
