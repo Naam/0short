@@ -21,11 +21,11 @@
 		
         {% if valid %}
         {% if ciphered %}
-         <a href="http://{{ request.get_host }}{% url 'url_redirection_ciphered' url key %}">
-        http://{{ request.get_host }}{% url 'url_redirection_ciphered' url key %}</a>
+         <a href="http://{{ request.get_host }}{% url 'url_redirection_key' url key %}">
+        http://{{ request.get_host }}{% url 'url_redirection_key' url key %}</a>
         {% else %}
-	    <a href="http://{{ request.get_host }}{% url 'url_redirection_clear' url %}">
-        http://{{ request.get_host }}{% url 'url_redirection_clear' url %}</a>
+	    <a href="http://{{ request.get_host }}{% url 'url_redirection' url %}">
+        http://{{ request.get_host }}{% url 'url_redirection' url %}</a>
         {% endif %}
         {% else %}
         <form action="{% url 'link_shortner.views.create' %}" method="post">

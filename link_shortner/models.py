@@ -15,7 +15,7 @@ class urlEntry(models.Model):
         charset = string.ascii_letters + string.digits
         code = "".join([random.choice(charset) for _ in range(size)])
         if len(urlEntry_clear.objects.filter(code = code)) > 0:
-            getcode(size) # TODO hash function or short url not infinitely stored.
+            self.getcode(self, size) # TODO hash function or short url not infinitely stored.
         return code
     def save(self, *args, **kwargs):
         if self.pk is None:
@@ -25,27 +25,15 @@ class urlEntry(models.Model):
         return "{0} | {1}".format(self.code, self.url_long)
 
 class urlEntry_clear(urlEntry):
-    url_long    = models.URLField(max_length=555, unique=True,
-            verbose_name="", )
-    ciphered    = models.BooleanField(default=False)
-    def save(self, *args, **kwargs):
-        super(urlEntry_clear, self).save(*args, **kwargs)
-    class Meta:
-        verbose_name = "short Url (plaintext)"
-        verbose_name_plural = "shor Urls (plaintext)"
+    url_long    = models.URLField(max_length=555,)
 
 class urlEntry_ciphered(urlEntry):
-    url_long    = models.TextField(unique=True, verbose_name="")
-    ciphered    = models.BooleanField()
+    url_long    = models.TextField()
+    ciphered    = models.BooleanField(default=False)
     key         = ""
     def save(self, *args, **kwargs):
         if not self.ciphered:
             self.url_long, self.key = crypto.encrypt(self.url_long)
             self.ciphered = True
         super(urlEntry_ciphered, self).save(*args, **kwargs)
-    class Meta:
-        verbose_name = "short Url (ciphered)"
-        verbose_name_plural = "shor Urls (ciphered)"
-
-
 

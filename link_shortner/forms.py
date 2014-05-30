@@ -4,16 +4,10 @@ from link_shortner.models import urlEntry_clear, urlEntry_ciphered
 from django.http import HttpRequest
 
 class Form_newUrl_clear(forms.ModelForm):
+    ciphered = forms.NullBooleanField(initial=False, widget=forms.CheckboxInput)
     class Meta:
         model = urlEntry_clear
-        fields = ('url_long', 'ciphered')
-    def clean_url_long(self):
-        url = self.cleaned_data['url_long']
-        if urlEntry_clear.objects.filter(url_long=url).exists():
-            raise forms.ValidationError(
-                    'Alias already exist as ' +
-                    urlEntry_clear.objects.get(url_long=url).code)
-        return url
+        fields = ('url_long',)
 
 class Form_newUrl_ciph(forms.ModelForm):
     class Meta:
