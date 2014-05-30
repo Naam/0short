@@ -3,7 +3,7 @@ from django.db import models
 from django import forms
 import string
 import random
-from murl import crypto
+from link_shortner import crypto
 
 # Create your models here.
 class urlEntry(models.Model):

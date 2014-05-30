@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 from django.contrib import admin
-from murl.models import urlEntry_clear, urlEntry_ciphered
+from link_shortner.models import urlEntry_clear, urlEntry_ciphered
 
 class AdminUrlEntry(admin.ModelAdmin):
     list_display    = ('code', 'access', 'url_long', 'date',)

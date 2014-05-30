@@ -28,7 +28,7 @@
         http://{{ request.get_host }}{% url 'url_redirection_clear' url %}</a>
         {% endif %}
         {% else %}
-        <form action="{% url 'murl.views.create' %}" method="post">
+        <form action="{% url 'link_shortner.views.create' %}" method="post">
 		    {% csrf_token %}
             {{ form.non_field_errors }}
             {{ form.url_long.errors }}

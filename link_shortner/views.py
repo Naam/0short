@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from murl.forms import Form_newUrl_clear, Form_newUrl_ciph
-from murl.models import urlEntry_clear, urlEntry_ciphered
+from link_shortner.forms import Form_newUrl_clear, Form_newUrl_ciph
+from link_shortner.models import urlEntry_clear, urlEntry_ciphered
 from django.views.generic import DetailView
-from murl import crypto
+from link_shortner import crypto
 
 # Create your views here.
 def create(request):
@@ -20,7 +20,7 @@ def create(request):
                 ciphered= True
             url     = blob.code
             valid   = True
-    return render(request, 'murl/create.html', locals())
+    return render(request, 'link_shortner/create.html', locals())
 
 def retrieveUrl_clear(request, short_code):
     return retrieveUrl_ciphered(request, short_code, None)

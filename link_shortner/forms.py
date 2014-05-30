@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 from django import forms
-from murl.models import urlEntry_clear, urlEntry_ciphered
+from link_shortner.models import urlEntry_clear, urlEntry_ciphered
 from django.http import HttpRequest
 
 class Form_newUrl_clear(forms.ModelForm):

@@ -1,5 +1,5 @@
 """
-Django settings for mini_url project.
+Django settings for 0short project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -21,10 +21,10 @@ SECRET_KEY = '1vr%7a6&)3(bo_(i2v(1i-@^9tuor7=c1f3u_jk#7bb!#0*=rp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'murl'
+    'link_shortner'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,9 +48,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'mini_url.urls'
+ROOT_URLCONF = '0short.urls'
 
-WSGI_APPLICATION = 'mini_url.wsgi.application'
+WSGI_APPLICATION = '0short.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -80,7 +80,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATICFILES_DIRS = (
-        '/home/naam/Documents/Repos/0short/mini_url/static/',
+        '/home/naam/Documents/Repos/0short/0short/static/',
         )
 STATIC_URL = '/static/'
 
