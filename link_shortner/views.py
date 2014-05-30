@@ -31,6 +31,7 @@ def create(request):
 
 def get_page(short_code):
     url = urlEntry_clear.objects.filter(code=short_code)
+    ciphered = False
     if not len(url) > 0:
         url = urlEntry_ciphered.objects.filter(code=short_code)
         ciphered = True
@@ -46,7 +47,7 @@ def retrieveUrl(request, short_code, key=None):
                 return redirect(reverse('url_decipher',
                     kwargs={'short_code':short_code}))
         else:
-            tmp = url.url_long
+            tmp = url[0].url_long
         url[0].access += 1
         url[0].save()
         return redirect(tmp)
