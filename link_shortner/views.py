@@ -54,6 +54,7 @@ def retrieveUrl(request, short_code, key=None):
         raise Http404
 
 def getUrl(request, short_code):
+    error_msg = "Invalid key."
     url_query = get_object_or_404(urlEntry_ciphered, code=short_code)
     if request.method != 'POST':
         # display form
@@ -63,10 +64,12 @@ def getUrl(request, short_code):
         form = Form_getUrl(request.POST)
         if form.is_valid():
             key = form.cleaned_data['key']
-            url_clear = crypto.decrypt(url_query.url_long,
+            try:
+                url_clear = crypto.decrypt(url_query.url_long,
                     key)
+            except Exception:
+                error = True
         else:
             error = True
-            error_msg = "Invalid key."
     return render(request, 'link_shortner/get_url.html', locals())
 
