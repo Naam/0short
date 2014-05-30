@@ -1,0 +1,15 @@
+{% extends "link_shortner/base.html" %}
+{%block content %}
+{% if display_form %}
+    <form action="{% url 'url_decipher' short_code %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+{% else %}
+    {% if error %}
+        {{ error_msg }}
+    {% else %}
+        <a href="{{ url_clear }}">{{ url_clear }}</a>
+    {% endif %}
+{% endif %}
+{% endblock %}

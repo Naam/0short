@@ -1,24 +1,5 @@
-<!DOCTYPE HTML>
-{% load static %}
-<html>
-<head>
-     <title>0Short</title>
-    <meta http-equiv="Content-Type" content="text/html>; charset=utf-8" />
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-	<link href='http://fonts.googleapis.com/css?family=Petit+Formal+Script' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:300,400' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300' rel='stylesheet' type='text/css'>
-	</head>
-	<body>
-	<div class="content">
-			<div class="wrap">
-				<div class="content-grid">
-                    <p><img src="{% static 'images/top.png' %}" title=""></p>
-				</div>
-				<div class="grid">
-                    <p><a href="{% url 'url_create' %}"><img src="{% static 'images/0short.png' %}" title=""></a></p>
-		<h3>Short your URL</h3>
-		
+{% extends "link_shortner/base.html" %}
+{% block content %}
         {% if valid %}
         {% if ciphered %}
          <a href="http://{{ request.get_host }}{% url 'url_redirection_key' url key %}">
@@ -41,16 +22,4 @@
             </p>
         </form>
         {% endif %}
-		<div class="clear"></div>
-		</div>
-		<div class="clear"></div>
-		<div class="footer">
-            <p class="a"><a href="https://github.com/Naam/0short"><img src="{% static 'images/github.png' %}" title=""></a>
-		<p>Copyright 2014 &copy Product by <a href="http://0xnaam.fr">Naam</a> and Design by <a href="http://tinydgzz.fr"> TiNyDGZz</a> </p>
-		</div>
-		<div class="clear"></div>
-		</div>
-		</div>
-		<div class="clear"></div>
-</body>
-</html>
+{% endblock %}

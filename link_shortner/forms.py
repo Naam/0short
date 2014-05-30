@@ -13,3 +13,6 @@ class Form_newUrl_ciph(forms.ModelForm):
     class Meta:
         model = urlEntry_ciphered
         fields = ('url_long',)
+
+class Form_getUrl(forms.Form):
+    key = forms.CharField(min_length=64, max_length=64)

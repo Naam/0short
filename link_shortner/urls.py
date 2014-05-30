@@ -7,5 +7,6 @@ urlpatterns = patterns('link_shortner.views',
     url(r'^(?P<short_code>\w{4}).(?P<key>\w{64})$',
         'retrieveUrl', name='url_redirection_key'),
     url(r'^(?P<short_code>\w{4})', 'retrieveUrl', name='url_redirection'),
+    url(r'^get/(?P<short_code>\w{4})', 'getUrl', name='url_decipher'),
     url(r'^about$', TemplateView.as_view(template_name='link_shortner/about.html')),
 )
